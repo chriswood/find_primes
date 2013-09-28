@@ -8,6 +8,13 @@ app = Flask(appname)
 def main():
     return 'in main!' 
 
+def get_results(search_type, num_results):
+    """
+    Takes a type of search, and the number of primes wanted,
+    and returns a list of integers.
+    """
+    return [1,2,3,5,7]
+
 @app.route('/results', methods=['GET', 'POST'])
 def display_results(search_type='default_method'):
     error_msg = ''
