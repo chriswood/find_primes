@@ -1,10 +1,10 @@
 {% extends "layout.html" %}
 {% block content %}
     <table>
-    This is the results for the first 100 primes calculated using the {{ method_name }} method.
+    This is the results for the first {{ slength }} primes calculated using the {{ xxstype }} method.
     {% for num in res_list %}
     <tr>
-        <td>{{ num }}, </td>
+        <td>{{ num }}{% if not loop.last %},{% endif %} </td>
     </tr>
     {% endfor %}
     </table>

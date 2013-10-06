@@ -14,7 +14,8 @@ def get_results(stype, slength):
     Takes a type of search, and the number of primes wanted,
     and returns a list of integers.
     """
-    return [1,2,3,5,7]
+    #if type(stype) == types.functionType
+    return stype(slength)
 
 
 @app.route('/<stype>/<int:slength>', methods=['GET', 'POST'])
@@ -24,8 +25,7 @@ def display_results(stype, slength):
     #instantiate
     #calculate
     #print results
-    error_msg = 'ggg'
-    results = range(100)
+    error_msg = ''
     if stype != 'default_method': #temp
         error_msg = 'Invalid or missing search type'
     context = {
