@@ -7,7 +7,7 @@ class Calc:
         All methods used will be stored here.
     """
     def __init__(self, slength):
-        self.search_length = slength
+        self.slength = slength
         self.errors = []
         self.result = []
         self.valid_stypes = ['brute_force']
@@ -27,8 +27,33 @@ class Calc:
     def brute_force(self):
         """ 
         The basic generator of primes. 
-        1) get an empty list
-        2) for every odd #, test for prime
-        3) If it is, add it to list
+        
         """
-        return [2,3,5,7,11,13,17,19,23,29,31,37]
+        plist = [2]
+        last_tested_num = 1
+        
+        def is_prime_brute(num):
+            if self.multiple_of_three(num):
+                return False
+            # We have tested 2 and 3.
+            # num/2 is not an integer, num/3 is not an integer
+            # So, we need to test 4 through num/4
+            return(True)
+        
+        # We need slength primes.
+        while len(plist) < self.slength:
+            # weed out even mumbers...
+            num = last_tested_num + 2
+            if is_prime_brute(num):
+                plist.append(num)
+            last_tested_num = num
+        return plist
+    
+    def multiple_of_three(self, n):
+        """
+        Since 3 is a very common mulitple it may be worth taking advantage of
+        a trick that lets us avoid a large modulation, instead doing addition
+        and a final small modulation.
+        TODO: Test and see if this is quicker on average or for a given range.
+        """
+        return False

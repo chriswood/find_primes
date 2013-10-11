@@ -1,7 +1,8 @@
 {% extends "layout.html" %}
 {% block content %}
     <table>
-    This is the results for the first {{ slength }} primes calculated using the {{ xxstype }} method.
+    This is the result for the {{ slength }} prime(s)
+calculated using the {{ stype }} method.
     {% for num in res_list %}
     <tr>
         <td>{{ num }}{% if not loop.last %},{% endif %} </td>

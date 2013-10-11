@@ -29,18 +29,12 @@ def display_results(stype, slength):
     Get needed data together for the search results page.
     I need to add error handling.
     """
-    #get the get vars type and length
-    #instantiate
-    #calculate
-    #print results
-    error_msg = ''
-    
     context = {
         'stype': stype, 
         'slength': slength,
         'res_list': get_results(stype, slength),
         'error_msg': '' 
-    } 
+    }
     return render_template('display_results.html', **context)
     
 
