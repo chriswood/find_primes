@@ -3,10 +3,14 @@
     <table>
     This is the result for the {{ slength }} prime(s)
 calculated using the {{ stype }} method.
-    {% for num in res_list %}
-    <tr>
-        <td>{{ num }}{% if not loop.last %},{% endif %} </td>
-    </tr>
-    {% endfor %}
+    {% if error_msg %}
+        {{ error_msg }}
+    {% else %}
+        {% for num in res_list %}
+            <tr>
+                <td>{{ num }}{% if not loop.last %},{% endif %} </td>
+            </tr>
+        {% endfor %}
+    {% endif %}
     </table>
 {% endblock %}

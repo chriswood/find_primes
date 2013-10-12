@@ -20,20 +20,20 @@ def get_results(stype, slength):
 
     # The class will check for valid search type
     calc.run_method(stype)
-    return calc.result  
-
+    
+    return {'error_msg': calc.errors, 'result': calc.result}
 
 @app.route('/<stype>/<int:slength>', methods=['GET', 'POST'])
 def display_results(stype, slength):
     """
     Get needed data together for the search results page.
-    I need to add error handling.
     """
+    results = get_results(stype, slength)
     context = {
         'stype': stype, 
         'slength': slength,
-        'res_list': get_results(stype, slength),
-        'error_msg': '' 
+        'res_list': results['result'],
+        'error_msg': results['error_msg'] 
     }
     return render_template('display_results.html', **context)
     

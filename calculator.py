@@ -9,7 +9,7 @@ class Calc:
     def __init__(self, slength):
         self.slength = slength
         self.errors = []
-        self.result = []
+        self.result = [2]
         self.valid_stypes = ['brute_force']
         
     def run_method(self, stype):
@@ -19,35 +19,32 @@ class Calc:
         """
         if stype in self.valid_stypes:
             f = getattr(self, stype) #assumes naming conventions...
-            self.result = f()            
+            f()            
         else:
             # Result stays empty
             self.errors.append('Invalid Search Type')
+            
+    def is_prime(self, N):
+        return True
         
     def brute_force(self):
         """ 
         The basic generator of primes. 
         
         """
-        plist = [2]
         last_tested_num = 1
         
-        def is_prime_brute(num):
-            if self.multiple_of_three(num):
-                return False
-            # We have tested 2 and 3.
-            # num/2 is not an integer, num/3 is not an integer
-            # So, we need to test 4 through num/4
-            return(True)
+        def gen_primes(number):
+            while True:
+                if self.is_prime(number):
+                    yield number
+                number += 1
         
-        # We need slength primes.
-        while len(plist) < self.slength:
-            # weed out even mumbers...
-            num = last_tested_num + 2
-            if is_prime_brute(num):
-                plist.append(num)
-            last_tested_num = num
-        return plist
+        for n_prime in gen_primes(3): #start with 3 since we already have 2
+            if len(self.result) < self.slength:
+                self.result.append(n_prime)
+            else:
+                return
     
     def multiple_of_three(self, n):
         """
