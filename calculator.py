@@ -1,5 +1,5 @@
 
-
+import math
 
 class Calc:
     """
@@ -25,32 +25,37 @@ class Calc:
             self.errors.append('Invalid Search Type')
             
     def is_prime(self, N):
+        '''
+        Check a number N and see if it is divisible by anything (less that
+        it's square root) evenly.
+        '''
+        # check predefined values
+        if N in (1, 4):
+            return False
+        if N in (2, 3):
+            return True
+        
+        #get last value to test for even division into N
+        last_value = math.ceil(math.sqrt(N))
+
+        for n in range(2, int(last_value) + 1):
+            if (N%n == 0):
+                return False
         return True
         
     def brute_force(self):
         """ 
-        The basic generator of primes. 
-        
-        """
-        last_tested_num = 1
-        
+        The straight forward (somewhat) method of creating primes
+        through a generator. 
+        """  
         def gen_primes(number):
             while True:
                 if self.is_prime(number):
                     yield number
                 number += 1
-        
-        for n_prime in gen_primes(3): #start with 3 since we already have 2
+        #start with 3 since we already know 2 is not valid
+        for n_prime in gen_primes(3): 
             if len(self.result) < self.slength:
                 self.result.append(n_prime)
             else:
                 return
-    
-    def multiple_of_three(self, n):
-        """
-        Since 3 is a very common mulitple it may be worth taking advantage of
-        a trick that lets us avoid a large modulation, instead doing addition
-        and a final small modulation.
-        TODO: Test and see if this is quicker on average or for a given range.
-        """
-        return False
