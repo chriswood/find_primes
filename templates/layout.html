@@ -1,8 +1,17 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Prime Numbers Messing About</title>   
+        <title>Calculating Prime Numbers</title>   
         <strong><link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}"></strong>
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <ul class=flashes>
+                    {% for message in messages %}
+                        <li>{{ message }}</li>
+                    {% endfor %}
+                 </ul>
+            {% endif %}
+        {% endwith %}
     </head>
     <body>
         <header>
@@ -17,7 +26,6 @@
                 </strong>
             </div>
         </header>
-
         <div class="container">
             {% block content %}
             {% endblock %}

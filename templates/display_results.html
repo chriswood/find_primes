@@ -3,8 +3,8 @@
     <table>
     This is the result for the {{ slength }} prime(s)
 calculated using the {{ stype }} method.
-    {% if error_msg %}
-        {{ error_msg }}
+    {% if error %}
+        <p class=error><strong>Error:</strong> {{ error }}
     {% else %}
         {% for num in res_list %}
             <tr>

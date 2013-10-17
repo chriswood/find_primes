@@ -7,7 +7,7 @@ class Calc:
         All methods used will be stored here.
     """
     def __init__(self, slength):
-        self.slength = slength
+        self.slength = int(slength)
         self.errors = []
         self.result = [2]
         self.valid_stypes = ['brute_force']
@@ -47,7 +47,7 @@ class Calc:
         """ 
         The straight forward (somewhat) method of creating primes
         through a generator. 
-        """  
+        """
         def gen_primes(number):
             while True:
                 if self.is_prime(number):

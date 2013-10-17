@@ -1,0 +1,29 @@
+{% extends "layout.html" %}
+{% block content %}
+    <form name="p_count_form" method="post" action="/">
+        <table>
+            <tr>
+                <td>
+                    Enter number of consecutive primes to search for below.
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="text" id="p_count_field" name="p_count_field">
+                </td>
+            </tr>
+             <tr>
+                <td>Choose search method
+                    <select id="p_method">
+                        <option value="brute_force" selected=True>Brute Force (trial)</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="submit" value="Start calculation">
+                </td>
+            </tr>
+        </table>
+    </form>
+{% endblock %}
